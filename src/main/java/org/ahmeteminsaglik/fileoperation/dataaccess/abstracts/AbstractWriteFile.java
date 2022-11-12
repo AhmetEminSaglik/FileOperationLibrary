@@ -20,8 +20,12 @@ public abstract class AbstractWriteFile {
 
     public abstract void appendNextLine(String text);
 
-    public FileFundamental getFileConfiguration() {
+    public FileFundamental getFileFundamental() {
         return fileFundamental;
+    }
+
+    public void setFileFundamental(FileFundamental fileFundamental) {
+        this.fileFundamental = fileFundamental;
     }
 
     protected final void doProcess(String text) {
@@ -33,9 +37,6 @@ public abstract class AbstractWriteFile {
         }
     }
 
-    public void setFileConfiguration(FileFundamental fileFundamental) {
-        this.fileFundamental = fileFundamental;
-    }
 
     protected void setAppendEnable(boolean appendEnable) {
         this.appendEnable = appendEnable;

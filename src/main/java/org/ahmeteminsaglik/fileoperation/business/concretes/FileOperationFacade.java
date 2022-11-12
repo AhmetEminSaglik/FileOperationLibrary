@@ -11,19 +11,23 @@ import java.util.List;
 /**
  * A library to process read and write functions */
 public class FileOperationFacade implements ReadFileService, WriteFileService {
-    FileOperationService fileOperationService;
-    private WriteFileService writeFileService;
-    private ReadFileService readFileService;
+   private FileOperationService fileOperationService;
+//    private WriteFileService writeFileService;
+//    private ReadFileService readFileService;
 
-    public FileOperationFacade(WriteFileService writeFileService, ReadFileService readFileService) {
-        fileOperationService = new FileOperationManagement(writeFileService, readFileService);
+/*    public FileOperationFacade(WriteFileService writeFileService, ReadFileService readFileService) {
+//        fileOperationService = new FileOperationManagement(writeFileService, readFileService);
         this.writeFileService = writeFileService;
         this.readFileService = readFileService;
+    }*/
+
+    public FileOperationFacade(FileOperationService fileOperationService) {
+        this.fileOperationService = fileOperationService;
     }
 
     @Override
     public void read(FileFundamental fileFund) {
-        readFileService.read(fileFund);
+        fileOperationService.getReadFileService().read(fileFund);
     }
 
    /* @Override
@@ -33,17 +37,17 @@ public class FileOperationFacade implements ReadFileService, WriteFileService {
 
     @Override
     public void read(List<FileFundamental> files) {
-        readFileService.read(files);
+        fileOperationService.getReadFileService().read(files);
     }
 
     @Override
     public List<String> getReadDataList() {
-        return readFileService.getReadDataList();
+        return fileOperationService.getReadFileService().getReadDataList();
     }
 
     @Override
     public void clearList() {
-        readFileService.clearList();
+        fileOperationService.getReadFileService().clearList();
     }
 
    /* @Override
@@ -58,12 +62,12 @@ public class FileOperationFacade implements ReadFileService, WriteFileService {
 */
     @Override
     public void write(FileFundamental fileFund, String text) {
-        writeFileService.write(fileFund, text);
+        fileOperationService.getWriteFileService().write(fileFund, text);
     }
 
     @Override
     public void write(FileFundamental fileFund, List<String> textList) {
-        writeFileService.write(fileFund, textList);
+        fileOperationService.getWriteFileService().write(fileFund, textList);
     }
 
 /*
@@ -80,11 +84,19 @@ public class FileOperationFacade implements ReadFileService, WriteFileService {
 
     @Override
     public void append(FileFundamental fileFund, String text) {
-        writeFileService.append(fileFund, text);
+        fileOperationService.getWriteFileService().append(fileFund, text);
     }
 
     @Override
     public void append(FileFundamental fileFund, List<String> textList) {
-        writeFileService.append(fileFund, textList);
+        fileOperationService.getWriteFileService().append(fileFund, textList);
+    }
+
+    public FileOperationService getFileOperationService() {
+        return fileOperationService;
+    }
+
+    public void setFileOperationService(FileOperationService fileOperationService) {
+        this.fileOperationService = fileOperationService;
     }
 }

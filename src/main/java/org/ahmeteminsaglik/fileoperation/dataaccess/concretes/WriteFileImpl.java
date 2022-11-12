@@ -8,6 +8,7 @@ public class WriteFileImpl extends AbstractWriteFile {
         super(fileFundamental);
     }
 
+    
     @Override
     public void write(String text) {
         setAppendEnable(false);

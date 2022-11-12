@@ -18,7 +18,7 @@ public class ReadFileImpl extends AbstractReadFile {
              *  read, the errors will be append to something like errorFile.txt
              * */
 
-            System.err.println("Exception :  " +getClass().getSimpleName()+ " : Error Message : " + e.getMessage());
+            System.err.println("Exception Occured: Could not read the file : Error Message : " + e.getMessage());
 
         } finally {
             if (reader != null) {

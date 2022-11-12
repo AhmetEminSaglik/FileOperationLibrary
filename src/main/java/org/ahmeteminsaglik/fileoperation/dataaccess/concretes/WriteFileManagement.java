@@ -31,16 +31,16 @@ public class WriteFileManagement extends FileOperation implements WriteFileServi
         appendListTextInForLoop(fileFund, 1, textList);
     }
 
- /*   @Override
-    public void append(String text) {
-        append(defaultFileFund, text);
-    }
+    /*   @Override
+       public void append(String text) {
+           append(defaultFileFund, text);
+       }
 
-    @Override
-    public void append(List<String> textList) {
-        appendListTextInForLoop(defaultFileFund, 0, textList);
-    }
-*/
+       @Override
+       public void append(List<String> textList) {
+           appendListTextInForLoop(defaultFileFund, 0, textList);
+       }
+   */
     @Override
     public void append(FileFundamental fileFund, String text) {
         AbstractWriteFile writeFile = new WriteFileImpl(fileFund);
@@ -61,9 +61,7 @@ public class WriteFileManagement extends FileOperation implements WriteFileServi
     private void writeFirstIndex(FileFundamental fileFund, List<String> textList) {
         if (!textList.isEmpty()) {
             write(fileFund, textList.get(0));
-        }else{
-            /**TODO
-             * Could not write anything to file because TEXTLIST is empty. kind of error message should be show up*/
+        } else {
             System.err.println("Could not write anything to file because TEXTLIST is empty");
         }
     }

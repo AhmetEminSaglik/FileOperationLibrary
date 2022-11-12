@@ -20,10 +20,11 @@ public class ReadFileManagement extends FileOperation implements ReadFileService
             listData.addAll(readFileImp.getReadDataList());
             readFileImp.clearList();
         } catch (FileNotFoundException e) {
+            System.err.println("FILE NOT FOUND EXCEPTION : "+e.getMessage());
             /** TODO
              *  an error and solutioun should be add here
              *  and remove throw error here*/
-            throw new RuntimeException(e);
+//            throw new RuntimeException(e);
         }
     }
 

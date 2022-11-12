@@ -15,8 +15,6 @@ public abstract class AbstractReadFile {
     protected File file;
     protected Scanner reader;
     protected List<String> readDataList = new ArrayList<>(); // keeps read data only destination file
-    protected FileFundamental fileFund;
-
     public abstract void read();
 
     public List<String> getReadDataList() {
@@ -28,13 +26,6 @@ public abstract class AbstractReadFile {
         reader = new Scanner(file);
     }
 
-    public FileFundamental getFileFund() {
-        return fileFund;
-    }
-
-    public void setFileFund(FileFundamental fileFund) {
-        this.fileFund = fileFund;
-    }
     /**
      * This functions clear AbstractReadfile datList. Because this abstract's implementation
      * keeps data in one list even if it reads from different files*/

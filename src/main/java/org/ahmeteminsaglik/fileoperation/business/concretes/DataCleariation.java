@@ -1,3 +1,4 @@
+/*
 package org.ahmeteminsaglik.fileoperation.business.concretes;
 
 public class DataCleariation {
@@ -32,3 +33,4 @@ public class DataCleariation {
     }
 
 }
+*/
