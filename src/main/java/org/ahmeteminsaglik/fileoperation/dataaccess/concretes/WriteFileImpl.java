@@ -2,28 +2,32 @@ package org.ahmeteminsaglik.fileoperation.dataaccess.concretes;
 
 import org.ahmeteminsaglik.fileoperation.dataaccess.abstracts.AbstractWriteFile;
 import org.ahmeteminsaglik.fileoperation.entities.concretes.FileFundamental;
+import org.ahmeteminsaglik.fileoperation.utilities.Result;
 
 public class WriteFileImpl extends AbstractWriteFile {
     public WriteFileImpl(FileFundamental fileFundamental) {
         super(fileFundamental);
     }
 
-    
+    public WriteFileImpl() {
+        super(null);
+    }
+
     @Override
-    public void write(String text) {
+    public Result write(String text) {
         setAppendEnable(false);
-        doProcess(text);
+        return doProcess(text);
     }
 
     @Override
-    public void append(String text) {
+    public Result append(String text) {
         setAppendEnable(true);
-        doProcess(text);
+        return doProcess(text);
     }
 
     @Override
-    public void appendNextLine(String text) {
-        text="\n"+text;
-        append(text);
+    public Result appendNextLine(String text) {
+        text = "\n" + text;
+        return append(text);
     }
 }

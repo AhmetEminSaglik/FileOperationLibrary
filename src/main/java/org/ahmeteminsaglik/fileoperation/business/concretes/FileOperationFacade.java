@@ -9,9 +9,10 @@ import java.util.List;
 
 
 /**
- * A library to process read and write functions */
+ * A library to process read and write functions
+ */
 public class FileOperationFacade implements ReadFileService, WriteFileService {
-   private FileOperationService fileOperationService;
+    private FileOperationService fileOperationService;
 //    private WriteFileService writeFileService;
 //    private ReadFileService readFileService;
 
@@ -26,14 +27,14 @@ public class FileOperationFacade implements ReadFileService, WriteFileService {
     }
 
     @Override
+    public void read() {
+        fileOperationService.getReadFileService().read();
+    }
+
+    @Override
     public void read(FileFundamental fileFund) {
         fileOperationService.getReadFileService().read(fileFund);
     }
-
-   /* @Override
-    public void read() {
-        readFileService.read();
-    }*/
 
     @Override
     public void read(List<FileFundamental> files) {
@@ -50,16 +51,16 @@ public class FileOperationFacade implements ReadFileService, WriteFileService {
         fileOperationService.getReadFileService().clearList();
     }
 
-   /* @Override
+    @Override
     public void write(String text) {
-        writeFileService.write(text);
+        fileOperationService.getWriteFileService().write(text);
     }
 
     @Override
     public void write(List<String> textList) {
-        writeFileService.write(textList);
+        fileOperationService.getWriteFileService().write(textList);
     }
-*/
+
     @Override
     public void write(FileFundamental fileFund, String text) {
         fileOperationService.getWriteFileService().write(fileFund, text);
@@ -70,17 +71,16 @@ public class FileOperationFacade implements ReadFileService, WriteFileService {
         fileOperationService.getWriteFileService().write(fileFund, textList);
     }
 
-/*
+
     @Override
     public void append(String text) {
-        writeFileService.append(text);
+        fileOperationService.getWriteFileService().append(text);
     }
 
     @Override
     public void append(List<String> textList) {
-        writeFileService.append(textList);
+        fileOperationService.getWriteFileService().append(textList);
     }
-*/
 
     @Override
     public void append(FileFundamental fileFund, String text) {

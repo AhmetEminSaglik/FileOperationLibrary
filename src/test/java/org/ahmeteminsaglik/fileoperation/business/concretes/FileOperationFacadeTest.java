@@ -9,8 +9,6 @@ import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.WriteFileImpl;
 import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.WriteFileManagement;
 import org.ahmeteminsaglik.fileoperation.entities.concretes.FileFundamental;
 import org.junit.jupiter.api.*;
-
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -122,7 +120,7 @@ class FileOperationFacadeTest {
 
     @Test
     public void readFunctionEmptyFileFundTestCase() {
-        FileFundamental fileFund = getFileFundByFileName("INVALID FILE NAME");
+        FileFundamental fileFund = getFileFundByFileName("INVALID-FILE-NAME");
         fileOperationFacade.read(fileFund);
 //        int actualDataListSize = fileOperationFacade.getReadDataList().size();
 //        Assertions.assertEquals(0, actualDataListSize);
@@ -254,7 +252,6 @@ class FileOperationFacadeTest {
     public void fileOperationFacadeGetterSetterFuntionTestCase() {
         FileOperationService FOservice = fileOperationFacade.getFileOperationService();
         Assertions.assertNotNull(FOservice);
-        System.out.println("FOservice is not null : " + FOservice);
 
         fileOperationFacade.setFileOperationService(null);
         FileOperationService FOServiceNull = fileOperationFacade.getFileOperationService();

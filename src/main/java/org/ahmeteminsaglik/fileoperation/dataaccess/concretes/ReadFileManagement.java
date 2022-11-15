@@ -13,6 +13,11 @@ public class ReadFileManagement extends FileOperation implements ReadFileService
     AbstractReadFile readFileImp = new ReadFileImpl();
 
     @Override
+    public void read() {
+        read(fileFund);
+    }
+
+    @Override
     public void read(FileFundamental fileFund) {
         try {
             readFileImp.prepareFileToRead(fileFund);

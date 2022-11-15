@@ -8,20 +8,31 @@ import java.util.List;
 
 public class WriteFileManagement extends FileOperation implements WriteFileService {
 
-  /*  @Override
+    @Override
     public void write(String text) {
-        write(defaultFileFund, text);
+        if (fileFund != null) {
+            write(fileFund, text);
+        } else {
+            System.err.println("ERROR MESSAGE EKLENECEK");
+        }
     }
 
     @Override
     public void write(List<String> textList) {
-        writeFirstIndex(defaultFileFund, textList);
-        appendListTextInForLoop(defaultFileFund, 1, textList);
-    }*/
+        if (fileFund != null) {
+            writeFirstIndex(fileFund, textList);
+            appendListTextInForLoop(fileFund, 1, textList);
+        } else {
+            System.err.println("ERROR MESSAGE EKLENECEK");
+        }
+
+    }
+
+    AbstractWriteFile writeFile = new WriteFileImpl(fileFund);
 
     @Override
     public void write(FileFundamental fileFund, String text) {
-        AbstractWriteFile writeFile = new WriteFileImpl(fileFund);
+        writeFile.setFileFundamental(fileFund);
         writeFile.write(text);
     }
 
@@ -31,16 +42,24 @@ public class WriteFileManagement extends FileOperation implements WriteFileServi
         appendListTextInForLoop(fileFund, 1, textList);
     }
 
-    /*   @Override
-       public void append(String text) {
-           append(defaultFileFund, text);
-       }
+    @Override
+    public void append(String text) {
+        if (fileFund != null) {
+            append(fileFund, text);
+        } else {
+            System.err.println("ERROR MESSAGE EKLENECEK");
+        }
+    }
 
-       @Override
-       public void append(List<String> textList) {
-           appendListTextInForLoop(defaultFileFund, 0, textList);
-       }
-   */
+    @Override
+    public void append(List<String> textList) {
+        if (fileFund != null) {
+            appendListTextInForLoop(fileFund, 0,textList);
+        } else {
+            System.err.println("ERROR MESSAGE EKLENECEK");
+        }
+    }
+
     @Override
     public void append(FileFundamental fileFund, String text) {
         AbstractWriteFile writeFile = new WriteFileImpl(fileFund);
