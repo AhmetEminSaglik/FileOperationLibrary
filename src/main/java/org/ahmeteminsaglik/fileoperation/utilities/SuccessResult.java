@@ -6,8 +6,8 @@ public class SuccessResult extends Result {
         super(true);
     }
 
-    public SuccessResult(String msg) {
+    /*public SuccessResult(String msg) {
         super(true, msg);
-    }
+    }*/
 
 }

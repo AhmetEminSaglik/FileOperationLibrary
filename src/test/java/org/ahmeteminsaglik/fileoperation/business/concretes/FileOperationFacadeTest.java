@@ -100,7 +100,7 @@ class FileOperationFacadeTest {
     }
 
     @Test
-    public void readWithoutParameterTestCase() {
+    public void readWithoutFileFundParameterTestCase() {
         FileFundamental fileFund = getFileFundByFileName(TEST_FILLED_FILE_TO_READ);
         ReadFileService readFileService = new ReadFileManagement(fileFund);
         fileOperationFacade.setReadFileService(readFileService);
@@ -158,7 +158,7 @@ class FileOperationFacadeTest {
     }
 
     @Test
-    public void writeTextWithoutParameterTestCase() {
+    public void writeTextWithoutFileFundParameterTestCase() {
         FileFundamental fileFund = getFileFundByFileName(TEST_FILE_TO_WRITE);
         WriteFileService writeFileService = new WriteFileManagement(fileFund);
         fileOperationFacade.setWriteFileService(writeFileService);
@@ -172,7 +172,7 @@ class FileOperationFacadeTest {
     }
 
     @Test
-    public void writeTextListWithoutParameterTestCase() {
+    public void writeTextListWithoutFileFundParameterTestCase() {
         FileFundamental fileFund = getFileFundByFileName(TEST_FILE_TO_WRITE);
         WriteFileService writeFileService = new WriteFileManagement(fileFund);
         fileOperationFacade.setWriteFileService(writeFileService);
@@ -232,9 +232,33 @@ class FileOperationFacadeTest {
     }
 
     @Test
+    public void appendTextWithoutFileFundParameterTestCase() {
+        FileFundamental fileFund = getFileFundByFileName(TEST_FILE_T0_APPEND);
+        ReadFileService readFileService = new ReadFileManagement(fileFund);
+        WriteFileService writeFileService = new WriteFileManagement(fileFund);
+        fileOperationFacade = new FileOperationFacade(writeFileService, readFileService);
+
+        fileOperationFacade.read();
+        int lineSizeBeforeAppend = fileOperationFacade.getReadDataList().size();
+        int expectedLineSizeBeforeAppend = 1;
+        String errMsg = "Test data is not created clearly." + TEST_FILE_T0_APPEND + " file has to have 1 line text";
+        Assertions.assertEquals(expectedLineSizeBeforeAppend, lineSizeBeforeAppend, errMsg);
+        fileOperationFacade.clearList();
+
+        String text = "This text will append to file";
+        fileOperationFacade.append(text);
+        fileOperationFacade.read();
+
+        int lineSizeAfterAppend = fileOperationFacade.getReadDataList().size();
+        int expectedLineSizeAfterAppend = 2;
+        Assertions.assertEquals(expectedLineSizeAfterAppend, lineSizeAfterAppend, "More then expected line is added in Append process.");
+
+    }
+
+
+
+    @Test
     public void appendFunctionWithGivenTextAndFileFundTestCase() {
-
-
         FileFundamental fileFund = getFileFundByFileName(TEST_FILE_T0_APPEND);
         fileOperationFacade.read(fileFund);
         int lineSizeBeforeAppend = fileOperationFacade.getReadDataList().size();
@@ -281,6 +305,36 @@ class FileOperationFacadeTest {
         int lineSizeAfterAppend = fileOperationFacade.getReadDataList().size();
         int expectedLineSizeAfterAppend = 7;
         Assertions.assertEquals(expectedLineSizeAfterAppend, lineSizeAfterAppend, "More then expected line is added in Append process.");
+    }
+
+    @Test
+    public void appendTextListWithoutFileFundParameterTestCase() {
+        FileFundamental fileFund = getFileFundByFileName(TEST_FILE_T0_APPEND);
+        ReadFileService readFileService = new ReadFileManagement(fileFund);
+        WriteFileService writeFileService = new WriteFileManagement(fileFund);
+        fileOperationFacade = new FileOperationFacade(writeFileService, readFileService);
+
+        fileOperationFacade.read();
+        int lineSizeBeforeAppend = fileOperationFacade.getReadDataList().size();
+        int expectedLineSizeBeforeAppend = 1;
+        String errMsg = "Test data is not created clearly." + TEST_FILE_T0_APPEND + " file has to have 1 line text";
+        Assertions.assertEquals(expectedLineSizeBeforeAppend, lineSizeBeforeAppend, errMsg);
+        fileOperationFacade.clearList();
+
+        List<String> textList = new ArrayList<>();
+        textList.add("This");
+        textList.add("text");
+        textList.add("will");
+        textList.add("append");
+        textList.add("to");
+        textList.add("file");
+        fileOperationFacade.append(textList);
+        fileOperationFacade.read();
+
+        int lineSizeAfterAppend = fileOperationFacade.getReadDataList().size();
+        int expectedLineSizeAfterAppend = 7;
+        Assertions.assertEquals(expectedLineSizeAfterAppend, lineSizeAfterAppend, "More then expected line is added in Append process.");
+
     }
 
     @Test

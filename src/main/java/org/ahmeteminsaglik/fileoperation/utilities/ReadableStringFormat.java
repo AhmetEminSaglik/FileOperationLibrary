@@ -1,3 +1,4 @@
+/*
 package org.ahmeteminsaglik.fileoperation.utilities;
 
 public class ReadableStringFormat {
@@ -18,3 +19,4 @@ public class ReadableStringFormat {
     }
 
 }
+*/
