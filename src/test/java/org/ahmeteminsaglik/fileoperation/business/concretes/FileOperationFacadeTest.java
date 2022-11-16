@@ -9,6 +9,7 @@ import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.WriteFileImpl;
 import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.WriteFileManagement;
 import org.ahmeteminsaglik.fileoperation.entities.concretes.FileFundamental;
 import org.junit.jupiter.api.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,13 +99,22 @@ class FileOperationFacadeTest {
         fileOperationFacade.clearList();
     }
 
+    @Test
+    public void readWithoutParameterTestCase() {
+        FileFundamental fileFund = getFileFundByFileName(TEST_FILLED_FILE_TO_READ);
+        ReadFileService readFileService = new ReadFileManagement(fileFund);
+        fileOperationFacade.setReadFileService(readFileService);
+        fileOperationFacade.read();
+        int actualDataListSize = fileOperationFacade.getReadDataList().size();
+        Assertions.assertEquals(3, actualDataListSize);
+    }
 
+
+    @Disabled("Disabled Because this test function is not ready to test")
     @Test
     public void readFileNotFoundErrorTestCase() {
         FileFundamental fileFund = getFileFundByFileName("(INVALID FILE NAME FOR TEST)");
         fileOperationFacade.read(fileFund);
-//        int actualDataListSize = fileOperationFacade.getReadDataList().size();
-//        Assertions.assertEquals(0, actualDataListSize);
     }
 
     @Test
@@ -119,7 +129,7 @@ class FileOperationFacadeTest {
     }
 
     @Test
-    public void readFunctionEmptyFileFundTestCase() {
+    public void readFunctionInvalidFileFundTestCase() {
         FileFundamental fileFund = getFileFundByFileName("INVALID-FILE-NAME");
         fileOperationFacade.read(fileFund);
 //        int actualDataListSize = fileOperationFacade.getReadDataList().size();
@@ -145,6 +155,38 @@ class FileOperationFacadeTest {
         int totalReadFileLineSize = 4;
         readDataSize = fileOperationFacade.getReadDataList().size();
         Assertions.assertEquals(totalReadFileLineSize, readDataSize);
+    }
+
+    @Test
+    public void writeTextWithoutParameterTestCase() {
+        FileFundamental fileFund = getFileFundByFileName(TEST_FILE_TO_WRITE);
+        WriteFileService writeFileService = new WriteFileManagement(fileFund);
+        fileOperationFacade.setWriteFileService(writeFileService);
+
+        String text = "Line 1 is added";
+        fileOperationFacade.write(text);
+        int expectedLineSize = 1;
+        fileOperationFacade.read(fileFund);
+        int actualLineSize = fileOperationFacade.getReadDataList().size();
+        Assertions.assertEquals(expectedLineSize, actualLineSize);
+    }
+
+    @Test
+    public void writeTextListWithoutParameterTestCase() {
+        FileFundamental fileFund = getFileFundByFileName(TEST_FILE_TO_WRITE);
+        WriteFileService writeFileService = new WriteFileManagement(fileFund);
+        fileOperationFacade.setWriteFileService(writeFileService);
+
+        List<String> textList = new ArrayList<>();
+        textList.add("Line 1");
+        textList.add("Line 2");
+        textList.add("Line 3 is added");
+
+        fileOperationFacade.write(textList);
+        int expectedLineSize = 3;
+        fileOperationFacade.read(fileFund);
+        int actualLineSize = fileOperationFacade.getReadDataList().size();
+        Assertions.assertEquals(expectedLineSize, actualLineSize);
     }
 
     @Test

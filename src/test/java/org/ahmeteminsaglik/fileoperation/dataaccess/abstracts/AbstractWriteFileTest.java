@@ -10,11 +10,19 @@ import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.WriteFileImpl;
 import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.WriteFileManagement;
 import org.ahmeteminsaglik.fileoperation.entities.concretes.FileFundamental;
 import org.ahmeteminsaglik.fileoperation.utilities.Result;
+import org.ahmeteminsaglik.fileoperation.utilities.SuccessResult;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class AbstractWriteFileTest {
+    /*TODO
+    *  class'rin hangisini ne sekilde test etmeliyim, mesela servisler her turlu kullaniliyor. Servisleri mi test etmeliyim yoksa servislerden implement eden managaementlarimi ?
+    * hesap makinesinde 2-3 fonksiyonu 2-3 if else veya exceptionla test yapilirken goteriliyor maximum. Peki karmasik bir sistemde bunu nasil test edebiliriz.
+    * Mesela sifreleme algoritmasi nasil test edebiliriz, banka islemini nasil test edebiliriz? Sadece para yatir isleminden sonra bakiye kontrolu mu yapmaliyuiz yoksa ayrica
+    * o islemler icin kullanilan siniflar icinde ayri ayri testler yazilmali mi?
+    * Yani evler daireler villalar yasanabilir diye kontrol etsek yeterli mi yoksa  villa, apartman, gecekondu,gokdelen her bir kati icin mi test etmeliyiz*/
     final static String TEST_FILE_TO_WRITE = "test-write-file";
     final static String TEST_FILE_T0_APPEND = "test-append-file";
     static FileOperationFacade fileOperationFacade;
@@ -63,11 +71,12 @@ class AbstractWriteFileTest {
         assertFalse(result.isSuccess());
         Assertions.assertEquals("Cannot invoke \"org.ahmeteminsaglik.fileoperation.entities.concretes.FileFundamental.getCompletePath()\" because \"this.fileFundamental\" is null",
                 result.getMsg());
+
     }
 
     @Test
-
     public void testWriteFileImpErrorTestCaseInvalidFileFundPath() {
+
         FileFundamental fileFund = new FileFundamental().setPath("G:\\invalid Path 2").setFileName("test").setFileExtension(".txt");
         WriteFileImpl writeFile = new WriteFileImpl();
         writeFile.setFileFundamental(fileFund);

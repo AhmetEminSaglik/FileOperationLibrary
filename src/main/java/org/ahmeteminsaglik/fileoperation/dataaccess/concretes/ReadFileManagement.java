@@ -12,6 +12,14 @@ public class ReadFileManagement extends FileOperation implements ReadFileService
     List<String> listData = new ArrayList<>(); // keeps all read data even if they are in different files.
     AbstractReadFile readFileImp = new ReadFileImpl();
 
+    public ReadFileManagement() {
+        super();
+    }
+
+    public ReadFileManagement(FileFundamental fileFund) {
+        super(fileFund);
+    }
+
     @Override
     public void read() {
         read(fileFund);

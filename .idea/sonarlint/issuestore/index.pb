@@ -7,3 +7,5 @@ Ssrc/main/java/org/ahmeteminsaglik/fileoperation/business/concretes/DataProcess.
 Wsrc/main/java/org/ahmeteminsaglik/fileoperation/business/concretes/DataCleariation.java,0\4\042f76f9e03829495f12468e3829b076c80efcab
 Å
 Qsrc/main/java/org/ahmeteminsaglik/fileoperation/config/ConfigFileFundamental.java,1\6\166032b033d8231a6bd262ea3bdb98674a1dd0ed
+Ü
+Vsrc/main/java/org/ahmeteminsaglik/fileoperation/dataaccess/concretes/ReadFileImpl.java,e\b\ebadb819f5193df91a899006d987117122452f21

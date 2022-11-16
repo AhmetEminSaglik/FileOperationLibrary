@@ -16,11 +16,19 @@ public class FileOperationFacade implements ReadFileService, WriteFileService {
 //    private WriteFileService writeFileService;
 //    private ReadFileService readFileService;
 
-/*    public FileOperationFacade(WriteFileService writeFileService, ReadFileService readFileService) {
-//        fileOperationService = new FileOperationManagement(writeFileService, readFileService);
-        this.writeFileService = writeFileService;
-        this.readFileService = readFileService;
-    }*/
+    public FileOperationFacade(WriteFileService writeFileService, ReadFileService readFileService) {
+        fileOperationService = new FileOperationManagement(writeFileService, readFileService);
+//        this.writeFileService = writeFileService;
+//        this.readFileService = readFileService;
+    }
+
+    public void setWriteFileService(WriteFileService writeFileService) {
+        fileOperationService.setWriteFileService(writeFileService);
+    }
+
+    public void setReadFileService(ReadFileService readFileService) {
+        fileOperationService.setReadFileService(readFileService);
+    }
 
     public FileOperationFacade(FileOperationService fileOperationService) {
         this.fileOperationService = fileOperationService;
@@ -68,7 +76,9 @@ public class FileOperationFacade implements ReadFileService, WriteFileService {
 
     @Override
     public void write(FileFundamental fileFund, List<String> textList) {
+        System.out.println("AA");
         fileOperationService.getWriteFileService().write(fileFund, textList);
+        System.out.println("BB");
     }
 
 

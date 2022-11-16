@@ -8,6 +8,13 @@ import java.util.List;
 
 public class WriteFileManagement extends FileOperation implements WriteFileService {
 
+    public WriteFileManagement() {
+    }
+
+    public WriteFileManagement(FileFundamental fileFund) {
+        super(fileFund);
+    }
+
     @Override
     public void write(String text) {
         if (fileFund != null) {
