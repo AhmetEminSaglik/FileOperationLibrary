@@ -10,6 +10,7 @@ import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.WriteFileManagemen
 import org.ahmeteminsaglik.fileoperation.entities.concretes.FileFundamental;
 import org.junit.jupiter.api.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,20 @@ class FileOperationFacadeTest {
     final static String TEST_FILLED_FILE_TO_READ_2 = "test-read-filled-file-2";
     final static String TEST_FILE_T0_APPEND = "test-append-file";
     final static String TEST_FILE_TO_WRITE = "test-write-file";
+    final static String TEST_NOT_CREATED_BEFORE = "test-not-created-before";
+
+    @AfterAll
+    public void deleteAllCreatedFileToForTestCase() {
+        List<String> fileList = new ArrayList<>();
+        fileList.add(getFileFundByFileName(TEST_EMPTY_FILE_TO_READ).getCompletePath());
+        fileList.add(getFileFundByFileName(TEST_FILLED_FILE_TO_READ).getCompletePath());
+        fileList.add(getFileFundByFileName(TEST_FILLED_FILE_TO_READ_2).getCompletePath());
+        fileList.add(getFileFundByFileName(TEST_FILE_T0_APPEND).getCompletePath());
+        fileList.add(getFileFundByFileName(TEST_FILE_TO_WRITE).getCompletePath());
+        fileList.add(getFileFundByFileName(TEST_NOT_CREATED_BEFORE).getCompletePath());
+
+        fileList.forEach(e -> new File(e).delete());
+    }
 
     @BeforeAll
     public void prepareFileOperationFacade() {
@@ -256,7 +271,6 @@ class FileOperationFacadeTest {
     }
 
 
-
     @Test
     public void appendFunctionWithGivenTextAndFileFundTestCase() {
         FileFundamental fileFund = getFileFundByFileName(TEST_FILE_T0_APPEND);
@@ -375,7 +389,7 @@ class FileOperationFacadeTest {
 
     @Test
     public void writeFileNotFoundErrorTestCase() {
-        FileFundamental fileFund = getFileFundByFileName("(INVALID FILE NAME FOR TEST)");
+        FileFundamental fileFund = getFileFundByFileName(TEST_NOT_CREATED_BEFORE);
         AbstractWriteFile writeFileImp = new WriteFileImpl(fileFund);
         writeFileImp.write("test");
     }
@@ -386,6 +400,20 @@ class FileOperationFacadeTest {
         fileFund.setPath("src\\main\\resources\\");
         fileFund.setFileExtension(".txt");
         return fileFund;
+    }
+
+    @Test
+    public void GetterSetterFunctionsTestCase() {
+        FileFundamental fileFund = getFileFundByFileName(TEST_FILE_TO_WRITE);
+        ReadFileManagement readFileManagement = new ReadFileManagement(fileFund);
+        Assertions.assertEquals(readFileManagement.getFileFund(), fileFund);
+
+        WriteFileManagement writeFileManagement = new WriteFileManagement(fileFund);
+        Assertions.assertEquals(writeFileManagement.getFileFund(), fileFund);
+
+
+
+
     }
 
    /* private static List<FileFundamental> getFileFundEmptyFileToRead() {

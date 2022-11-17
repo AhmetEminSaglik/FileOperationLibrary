@@ -76,9 +76,7 @@ public class FileOperationFacade implements ReadFileService, WriteFileService {
 
     @Override
     public void write(FileFundamental fileFund, List<String> textList) {
-        System.out.println("AA");
         fileOperationService.getWriteFileService().write(fileFund, textList);
-        System.out.println("BB");
     }
 
 

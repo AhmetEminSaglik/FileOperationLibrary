@@ -10,9 +10,7 @@ import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.WriteFileImpl;
 import org.ahmeteminsaglik.fileoperation.dataaccess.concretes.WriteFileManagement;
 import org.ahmeteminsaglik.fileoperation.entities.concretes.FileFundamental;
 import org.ahmeteminsaglik.fileoperation.utilities.Result;
-import org.ahmeteminsaglik.fileoperation.utilities.SuccessResult;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
