@@ -411,9 +411,6 @@ class FileOperationFacadeTest {
         WriteFileManagement writeFileManagement = new WriteFileManagement(fileFund);
         Assertions.assertEquals(writeFileManagement.getFileFund(), fileFund);
 
-
-
-
     }
 
    /* private static List<FileFundamental> getFileFundEmptyFileToRead() {

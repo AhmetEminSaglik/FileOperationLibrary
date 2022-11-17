@@ -6,7 +6,7 @@
 
     <groupId>org.ahmeteminsaglik.fileoperation</groupId>
     <artifactId>FileOperation</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1</version>
     <dependencies>
          <dependency>
           <groupId>org.junit.jupiter</groupId>
@@ -14,36 +14,20 @@
           <version>RELEASE</version>
           <scope>test</scope>
       </dependency>
-    </dependencies>
-   <!-- <dependencies>
 
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-launcher</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.junit</groupId>
-                <artifactId>junit-bom</artifactId>
-                <version>5.9.1</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>-->
+    <!--<build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>-->
 
     <properties>
         <maven.compiler.source>15</maven.compiler.source>
@@ -51,3 +35,34 @@
     </properties>
 
 </project>
+
+
+        <!-- <dependencies>
+
+               <dependency>
+                   <groupId>org.junit.platform</groupId>
+                   <artifactId>junit-platform-launcher</artifactId>
+                   <scope>test</scope>
+               </dependency>
+               <dependency>
+                   <groupId>org.junit.jupiter</groupId>
+                   <artifactId>junit-jupiter-engine</artifactId>
+                   <scope>test</scope>
+               </dependency>
+               <dependency>
+                   <groupId>org.junit.vintage</groupId>
+                   <artifactId>junit-vintage-engine</artifactId>
+                   <scope>test</scope>
+               </dependency>
+           </dependencies>
+           <dependencyManagement>
+               <dependencies>
+                   <dependency>
+                       <groupId>org.junit</groupId>
+                       <artifactId>junit-bom</artifactId>
+                       <version>5.9.1</version>
+                       <type>pom</type>
+                       <scope>import</scope>
+                   </dependency>
+               </dependencies>
+           </dependencyManagement>-->

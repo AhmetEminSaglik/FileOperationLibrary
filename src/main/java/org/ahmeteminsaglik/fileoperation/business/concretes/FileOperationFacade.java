@@ -12,12 +12,15 @@ import java.util.List;
  * A library to process read and write functions
  */
 public class FileOperationFacade implements ReadFileService, WriteFileService {
+
+
     private FileOperationService fileOperationService;
 //    private WriteFileService writeFileService;
 //    private ReadFileService readFileService;
 
     public FileOperationFacade(WriteFileService writeFileService, ReadFileService readFileService) {
         fileOperationService = new FileOperationManagement(writeFileService, readFileService);
+        System.out.println("version : 1.0");
 //        this.writeFileService = writeFileService;
 //        this.readFileService = readFileService;
     }
@@ -31,7 +34,7 @@ public class FileOperationFacade implements ReadFileService, WriteFileService {
     }
 
     public FileOperationFacade(FileOperationService fileOperationService) {
-        this.fileOperationService = fileOperationService;
+        this(fileOperationService.getWriteFileService(), fileOperationService.getReadFileService());
     }
 
     @Override
@@ -107,4 +110,6 @@ public class FileOperationFacade implements ReadFileService, WriteFileService {
     public void setFileOperationService(FileOperationService fileOperationService) {
         this.fileOperationService = fileOperationService;
     }
+
+
 }
