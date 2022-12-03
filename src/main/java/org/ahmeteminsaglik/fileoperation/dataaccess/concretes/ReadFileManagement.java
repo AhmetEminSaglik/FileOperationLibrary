@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadFileManagement extends FileOperation implements ReadFileService {
-    List<String> listData = new ArrayList<>(); // keeps all read data even if they are in different files.
+    List<String> listData = new ArrayList<>(); // keeps all read data even if they read from different files.
     AbstractReadFile readFileImp = new ReadFileImpl();
 
     public ReadFileManagement() {

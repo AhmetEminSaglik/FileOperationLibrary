@@ -20,7 +20,7 @@ public class WriteFileManagement extends FileOperation implements WriteFileServi
         if (fileFund != null) {
             write(fileFund, text);
         } else {
-            System.err.println("ERROR MESSAGE EKLENECEK -write(String text)"+getClass().getSimpleName());
+            System.err.println("ERROR MESSAGE WILL BE ADD : write(String text) : "+getClass().getSimpleName());
         }
     }
 
@@ -30,7 +30,7 @@ public class WriteFileManagement extends FileOperation implements WriteFileServi
             writeFirstIndex(fileFund, textList);
             appendListTextInForLoop(fileFund, 1, textList);
         } else {
-            System.err.println("ERROR MESSAGE EKLENECEK"+getClass().getSimpleName());
+            System.err.println("ERROR MESSAGE WILL BE ADD : "+getClass().getSimpleName());
         }
 
     }
@@ -54,7 +54,7 @@ public class WriteFileManagement extends FileOperation implements WriteFileServi
         if (fileFund != null) {
             append(fileFund, text);
         } else {
-            System.err.println("ERROR MESSAGE EKLENECEK - append(String text)"+getClass().getSimpleName());
+            System.err.println("ERROR MESSAGE WILL BE ADD  : - append(String text) : "+getClass().getSimpleName());
         }
     }
 
@@ -63,7 +63,7 @@ public class WriteFileManagement extends FileOperation implements WriteFileServi
         if (fileFund != null) {
             appendListTextInForLoop(fileFund, 0,textList);
         } else {
-            System.err.println("ERROR MESSAGE EKLENECEK - append(List<String> textList) "+getClass().getSimpleName());
+            System.err.println("ERROR MESSAGE WILL BE ADD - append(List<String> textList) : "+getClass().getSimpleName());
         }
     }
 

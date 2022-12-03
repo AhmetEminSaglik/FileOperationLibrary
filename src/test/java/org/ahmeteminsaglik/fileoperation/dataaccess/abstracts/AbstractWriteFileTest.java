@@ -15,12 +15,11 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AbstractWriteFileTest {
-    /*TODO
-    *  class'rin hangisini ne sekilde test etmeliyim, mesela servisler her turlu kullaniliyor. Servisleri mi test etmeliyim yoksa servislerden implement eden managaementlarimi ?
-    * hesap makinesinde 2-3 fonksiyonu 2-3 if else veya exceptionla test yapilirken goteriliyor maximum. Peki karmasik bir sistemde bunu nasil test edebiliriz.
-    * Mesela sifreleme algoritmasi nasil test edebiliriz, banka islemini nasil test edebiliriz? Sadece para yatir isleminden sonra bakiye kontrolu mu yapmaliyuiz yoksa ayrica
-    * o islemler icin kullanilan siniflar icinde ayri ayri testler yazilmali mi?
-    * Yani evler daireler villalar yasanabilir diye kontrol etsek yeterli mi yoksa  villa, apartman, gecekondu,gokdelen her bir kati icin mi test etmeliyiz*/
+ /** TODO
+    * How to test code? Should it be  tested every function in every class or should it be tested after whole process?
+    * Most of the testing examples are about testing sum function of a calculater class. But mostly in project the functions alone maybe meaningless. After a few process
+    * they produce real things. So how to test exactly? If anyone helps I would be appreciate
+    * */
     final static String TEST_FILE_TO_WRITE = "test-write-file";
     final static String TEST_FILE_T0_APPEND = "test-append-file";
     static FileOperationFacade fileOperationFacade;
@@ -80,15 +79,9 @@ class AbstractWriteFileTest {
         writeFile.setFileFundamental(fileFund);
         Assertions.assertEquals(fileFund.getCompletePath(),writeFile.getFileFundamental().getCompletePath());
 
-
         String text = "error Test case";
         Result result = writeFile.write(text);
         assertFalse(result.isSuccess());
-       /* String errMsgExpected = fileFund.getCompletePath() + " (The system cannot find the path specified)";
-        //The filename, directory name, or volume label syntax is incorrect
-        Assertions.assertEquals(errMsgExpected, result.getMsg());
-
-        fileFund.setPath(writeFile.getFileFundamental().getCompletePath()+" (The filename, directory name, or volume label syntax is incorrect)")*/
     }
 
 

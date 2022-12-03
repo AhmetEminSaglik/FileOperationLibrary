@@ -15,14 +15,10 @@ public class FileOperationFacade implements ReadFileService, WriteFileService {
 
 
     private FileOperationService fileOperationService;
-//    private WriteFileService writeFileService;
-//    private ReadFileService readFileService;
 
     public FileOperationFacade(WriteFileService writeFileService, ReadFileService readFileService) {
         fileOperationService = new FileOperationManagement(writeFileService, readFileService);
         System.out.println("version : 1.0");
-//        this.writeFileService = writeFileService;
-//        this.readFileService = readFileService;
     }
 
     public void setWriteFileService(WriteFileService writeFileService) {
