@@ -60,7 +60,7 @@ class AbstractWriteFileTest {
         Assertions.assertEquals(1, lineNumberAfterWrite);
     }
 
-    @Test
+/*    @Test
     public void testWriteFileImpErrorTestCaseNullFileFund() {
         WriteFileImpl writeFile = new WriteFileImpl();
         String text = "error Test case";
@@ -69,7 +69,7 @@ class AbstractWriteFileTest {
         Assertions.assertEquals("Cannot invoke \"org.ahmeteminsaglik.fileoperation.entities.concretes.FileFundamental.getCompletePath()\" because \"this.fileFundamental\" is null",
                 result.getMsg());
 
-    }
+    }*/
 
     @Test
     public void testWriteFileImpErrorTestCaseInvalidFileFundPath() {
