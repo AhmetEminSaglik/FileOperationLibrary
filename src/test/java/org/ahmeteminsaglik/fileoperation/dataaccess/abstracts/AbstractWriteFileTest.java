@@ -15,11 +15,12 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AbstractWriteFileTest {
- /** TODO
-    * How to test code? Should it be  tested every function in every class or should it be tested after whole process?
-    * Most of the testing examples are about testing sum function of a calculater class. But mostly in project the functions alone maybe meaningless. After a few process
-    * they produce real things. So how to test exactly? If anyone helps I would be appreciate
-    * */
+    /**
+     * TODO
+     * How to test code? Should it be  tested every function in every class or should it be tested after whole process?
+     * Most of the testing examples are about testing sum function of a calculater class. But mostly in project the functions alone maybe meaningless. After a few process
+     * they produce real things. So how to test exactly? If anyone helps I would be appreciate
+     */
     final static String TEST_FILE_TO_WRITE = "test-write-file";
     final static String TEST_FILE_T0_APPEND = "test-append-file";
     static FileOperationFacade fileOperationFacade;
@@ -77,7 +78,7 @@ class AbstractWriteFileTest {
         FileFundamental fileFund = new FileFundamental().setPath("G:\\invalid Path 2").setFileName("test").setFileExtension(".txt");
         WriteFileImpl writeFile = new WriteFileImpl();
         writeFile.setFileFundamental(fileFund);
-        Assertions.assertEquals(fileFund.getCompletePath(),writeFile.getFileFundamental().getCompletePath());
+        Assertions.assertEquals(fileFund.getCompletePath(), writeFile.getFileFundamental().getCompletePath());
 
         String text = "error Test case";
         Result result = writeFile.write(text);
@@ -88,7 +89,7 @@ class AbstractWriteFileTest {
     private FileFundamental getFileFundByFileName(String fileName) {
         FileFundamental fileFund = new FileFundamental();
         fileFund.setFileName(fileName);
-        fileFund.setPath("src\\main\\resources\\");
+        fileFund.setPath("src\\main\\java\\resources\\");
         fileFund.setFileExtension(".txt");
         return fileFund;
     }
@@ -97,6 +98,7 @@ class AbstractWriteFileTest {
         FileFundamental fileFund = getFileFundByFileName(TEST_FILE_T0_APPEND);
         String textForAppendFile = "added this line before append anything to this file";
         fileOperationFacade.write(fileFund, textForAppendFile);
+        System.out.println("FILE CREATED");
     }
 
     private void createFileForWriteTest() {

@@ -397,7 +397,7 @@ class FileOperationFacadeTest {
     private FileFundamental getFileFundByFileName(String fileName) {
         FileFundamental fileFund = new FileFundamental();
         fileFund.setFileName(fileName);
-        fileFund.setPath("src\\main\\resources\\");
+        fileFund.setPath("src\\main\\java\\resources\\");
         fileFund.setFileExtension(".txt");
         return fileFund;
     }
