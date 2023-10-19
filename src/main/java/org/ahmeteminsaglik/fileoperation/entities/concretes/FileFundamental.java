@@ -36,4 +36,13 @@ public class FileFundamental {
     public String getCompletePath() {
         return path + fileName + extension;
     }
+
+    @Override
+    public String toString() {
+        return "FileFundamental{" +
+                "path='" + path + '\'' +
+                ", fileName='" + fileName + '\'' +
+                ", extension='" + extension + '\'' +
+                '}';
+    }
 }
