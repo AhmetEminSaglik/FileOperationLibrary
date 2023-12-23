@@ -1,7 +1,7 @@
 package org.ahmeteminsaglik.fileoperation.entities.concretes;
 
 public class FileFundamental {
-    String path;
+    String path = "";
     String fileName;
     String extension;
 
